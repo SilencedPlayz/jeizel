@@ -1,63 +1,38 @@
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.89">
     <meta charset="UTF-8">
-    <meta name="author" content="Rexander">
-    <title>Dear Jeizelyn</title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.9">
+    <title>Dear Jeizel</title>
     <style>
-      @keyframes fade-in {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-      @keyframes slide-right {
-        from {
-          transform: translateX(-10px);
-        }
-      }
       body {
-        font-family: Sans-Serif;
-        padding: 10px;
-        animation: fade-in 0.5s linear;
+        margin: 0;
+        font-family: "pop";
+        padding: 20px;
+      }
+      @font-face {
+        font-family: "pop";
+        src: url("./pregular.ttf") format("truetype")
       }
       #heading {
-        padding: 10px;
-        margin-bottom: 20px;
-        display: flex;
-        flex-direction: column;
+        font-size: 23px;
+        margin: 0;
       }
-      .h-main {
-        font-weight: bold;
-        font-size: 25px;
+      #subheading {
+        font-size: 13px;
       }
       #letters {
         display: flex;
-        gap: 30px;
-        flex-wrap: wrap;
-        animation: slide-right 0.5s ease-out;
+        flex-direction: column;
+        gap: 20px;
       }
-      .letter {
-        display: flex;
-        padding: 5px;
-        max-width: 400px;
-        gap: 15px;
-      }
-      .g1 {
-        border: 1px solid #00000038;
-      }
-      .g2 {
+      #card {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        font-size: 15px;
+        gap: 5px;
+        text-align: justify;
       }
-      .l-txt {
-        font-style: italic;
-        font-family: Serif;
-      }
-      .l-dt {
+      #dt {
         font-size: 10px;
         text-align: right;
       }
@@ -65,48 +40,10 @@
   </head>
   
   <body>
-    <div id="heading">
-      <div class="h-main">Dear Jeizelyn P. Jacinto,</div>
-      <div class="h-sub">I will write everything down here everytime I miss you, written by Rexander</div>
-    </div>
-    <div id="letters">
-      
-    </div>
+    <p id="heading">Dear<b>Jeizel</b></p>
+    <p id="subheading"><i>"I will write down everything here everytime I miss you"<br>- Rexander</i></p>
+    <div id="letters"></div>
   </body>
   
-  <script>
-    const Letters = document.getElementById("letters")
-    function addLetter(txt,dt){
-      const panel = document.createElement("div")
-      panel.classList.add("letter")
-      //g1
-      const group1 = document.createElement("div")
-      group1.classList.add("g1")
-      //g2
-      const group2 = document.createElement("div")
-      group2.classList.add("g2")
-      const text = document.createElement("div")
-      text.textContent = txt
-      text.classList.add("l-txt")
-      const data = document.createElement("div")
-      data.textContent = dt
-      data.classList.add("l-dt")
-      
-      group2.appendChild(text)
-      group2.appendChild(data)
-      panel.appendChild(group1)
-      panel.appendChild(group2)
-      Letters.appendChild(panel)
-    }
-    
-    
-    fetch("./letters.json").then(res=> res.json()).then(json => {
-      json.letters.forEach(l => {
-        const ltxt = l[0]
-        const ldt = l[1]
-        
-        addLetter(ltxt,ldt)
-      })
-    })
-  </script>
+  <script src="./script.js"></script>
 </html>
